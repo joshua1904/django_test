@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ shopping_details.name }}</h1>
+<a href="{{ shopping_details.get_absolute_add_item_url }}">add</a>
+<p>Date: {{ shopping_details.date }}</p>
+<h2>Items:</h2>
+<ul>
+{% for item in shopping_details.item_set.all %}
+    <li>{{ item.name }} - ${{ item.price }}    <form method="post" action="{% url 'delete-item' item_pk=item.pk shopping_pk=shopping_details.pk %}" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" onclick="return confirm('Sind Sie sicher, dass Sie dieses Item löschen möchten?');">Löschen</button>
+        </form></li>
+
+{% endfor %}
+</ul>
+{% endblock %}

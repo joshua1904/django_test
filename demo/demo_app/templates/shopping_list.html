@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Book List</h1>
+
+<a class="btn btn-primary" href="/add-shopping/">add<a/>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for shopping in shoppings %}
+    <div class="col">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">{{ shopping.name }}</h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary">{{ shopping.date }}</h6>
+                <p class="card-text">Bli bla blub</p>
+                <a href="{{ shopping.get_absolute_url }}" class="btn btn-primary">View Details</a>
+                <a href="{{ shopping.get_absolute_delete_shopping_url }}" class="btn btn-danger">Löschen</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

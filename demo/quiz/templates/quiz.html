@@ -1,0 +1,28 @@
+{% extends "base2.html" %}
+
+{% block content %}
+<div class="container">
+        <div class="quiz-container">
+            <h1 class="text-center mb-4">Quiz</h1>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Frage:</h5>
+                    <p class="card-text">{{ question.question }}</p>
+                </div>
+            </div>
+            <h5 class="mb-3">Antworten:</h5>
+          <form method="POST">
+    {% csrf_token %}
+    {% for answer in question.get_all_answers %}
+        <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" name="quizAnswer" id="answer{{ loop.index }}" value="{{ answer }}">
+            <label class="form-check-label" for="answer{{ loop.index }}">
+                {{ answer }}
+            </label>
+        </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary mt-3">Antwort bestätigen</button>
+</form>
+        </div>
+    </div>
+{% endblock %}

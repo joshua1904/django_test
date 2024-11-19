@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+ {% for shopping in shoppings %}
+<li>
+  {{shopping.name}} : {{shopping.date}}
+  </li>
+  {% endfor %}
+<body>
+
+</body>
+</html>
+
+{% endblock %}
