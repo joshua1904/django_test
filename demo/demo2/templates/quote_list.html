@@ -1,0 +1,31 @@
+<!-- quote_list.html -->
+{% extends 'base.html' %}
+
+{% block title %}Quotes{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Quotes</h1>
+
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <a href="{% url 'add_quote' %}" class="btn btn-primary me-2">Add Quote</a>
+            <a href="{% url 'add_person' %}" class="btn btn-secondary">Add Person</a>
+        </div>
+        <div class="col-md-6">
+            <form method="get" class="d-flex align-items-center">
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-outline-primary ms-2">Filter</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+        {% for quote in quotes %}
+            <div class="col">
+                {% include 'quote_card.html' with quote=quote.quote date=quote.date name=quote.person pk=quote.pk %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

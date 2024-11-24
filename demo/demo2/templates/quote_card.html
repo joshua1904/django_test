@@ -1,0 +1,11 @@
+<!-- quote_card.html -->
+<div class="card shadow-sm mb-3" style="max-width: 500px;">
+<div class="card">
+  <h5 class="card-header">"Quote</h5>
+  <div class="card-body">
+    <h5 class="card-title">{{quote}}</h5>
+    <p class="card-text">{{name}} {{date}}</p>
+    <a href="{% url 'delete_quote' pk=pk %}" class="btn btn-primary">Delete</a>
+  </div>
+</div>
+</div>

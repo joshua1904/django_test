@@ -8,11 +8,13 @@ from django.contrib import messages
 def home(request):
     return render(request, "base2.html")
 
+# list view without Django Listview ignore if possible
 def show_shoppings(request):
     shoppings = Shopping.objects.all()
     return render(request, "shoppings.html", {"shoppings": shoppings})
 
 
+# best way to show a list of models
 class ShoppingList(ListView):
     model = Shopping
     context_object_name = 'shoppings'
@@ -26,6 +28,7 @@ class ShoppingDetailView(DetailView):
 
 
 
+# its better to use CreateView
 def add_shopping_form(request):
     if request.method == "POST":
         form = ShoppingForm(request.POST)
